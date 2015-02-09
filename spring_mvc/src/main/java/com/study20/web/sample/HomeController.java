@@ -1,4 +1,4 @@
-package com.study20.web.part0.controller;
+package com.study20.web.sample;
 
 import java.sql.SQLException;
 import java.text.DateFormat;
