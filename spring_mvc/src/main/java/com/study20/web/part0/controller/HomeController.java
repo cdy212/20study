@@ -1,15 +1,19 @@
-package com.study20.web;
+package com.study20.web.part0.controller;
 
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * Handles requests for the application home page.
@@ -35,5 +39,14 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@Autowired
+	private SqlSession sql;
+	
+
+   @RequestMapping(value = "/test/query", method = RequestMethod.GET)
+   public @ResponseBody String queryTest() throws SQLException {
+	   return sql.selectList("sql.queryTest").toString();
+   }
 	
 }
